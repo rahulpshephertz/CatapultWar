@@ -1,0 +1,61 @@
+﻿<phone:PhoneApplicationPage x:Name="Join"
+    x:Class="CatapultWar.JoinPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CatapultWar"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/title_screen.png" Stretch="UniformToFill" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="CATAPULT WAR!!!!!!" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="Join Game" Margin="2,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" />
+        </StackPanel>-->
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="24" Foreground="Chocolate" FontWeight="Bold" Text="User Name" VerticalAlignment="Center" />
+            <TextBox Grid.Row="0" Grid.Column="2" Width="300" x:Name="txtUserName" HorizontalAlignment="Left"/>
+            </StackPanel>
+            <Button Content="Join" Grid.Column="2" Grid.Row="1" Height="62" Margin="60,30,0,0" Name="joinButton" VerticalAlignment="Top" Width="160" Click="joinButton_Click" HorizontalAlignment="Center"  Style="{StaticResource FormsButtonWithoutBorder}" Background="Green"/>
+        </Grid>
+        <Grid x:Name="MessagePopup" Visibility="Collapsed"  Width="800" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity="0.1" />
+            </Grid.Background>
+            <Rectangle RadiusX="10" RadiusY="10" Fill="Black" Width="450" Height="80" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.7" />
+            <TextBlock x:Name="messageTB" MaxWidth="440" Text="Please Wait.." TextWrapping="Wrap" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23" FontWeight="Bold" />
+        </Grid>
+    </Grid>
+    
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="true" IsMenuEnabled="true">
+            <shell:ApplicationBarIconButton IconUri="/Images/play.png" Text="New Game" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
