@@ -3,10 +3,9 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json.Linq;
 
 namespace CatapultWar
 {
@@ -34,7 +33,7 @@ namespace CatapultWar
                 {
                     msg.Type = dragJsonObj["Type"].ToString();
                     if (msg.Type.Equals("SHOT"))
-                    {
+                    { 
                         msg.ShotVelocity = dragJsonObj["ShotVelocity"].ToString();
                         msg.ShotAngle = dragJsonObj["ShotAngle"].ToString();
                     }

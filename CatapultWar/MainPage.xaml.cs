@@ -81,12 +81,12 @@ namespace CatapultWar
                      MessagePopup.Visibility = Visibility.Visible;
                     if (GlobalContext.IsConnectedToAppWarp)
                     {
-                        MakeJoinRoomInRangeRequest();
+                        JoinRoomWithRandomPlayer();
                     }
                     else
                     {
                         GlobalContext.warpClient.RemoveConnectionRequestListener(GlobalContext.conListenObj);
-                        GlobalContext.conListenObj = new ConnectionListener(showResult, MakeJoinRoomInRangeRequest);
+                        GlobalContext.conListenObj = new ConnectionListener(showResult, JoinRoomWithRandomPlayer);
                         GlobalContext.warpClient.AddConnectionRequestListener(GlobalContext.conListenObj);
                         WarpClient.GetInstance().Connect(GlobalContext.localUsername);
                     }
@@ -124,7 +124,7 @@ namespace CatapultWar
             //here we are looking for location-ID by his username
             WarpClient.GetInstance().GetLiveUserInfo(userName.Text);
         }
-        private void MakeJoinRoomInRangeRequest()
+        private void JoinRoomWithRandomPlayer()
         {
            AddListeners();
            Dictionary<string, object>  tableProperties = new Dictionary<string, object>();

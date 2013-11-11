@@ -64,12 +64,10 @@ namespace CatapultWar
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute)));
         }
         //Shows the message in the message grid
-        void showMessage(string message)
+        void showInfoMessage(string message)
         {
             messageTB.Text = message;
-            MessagePopup.Visibility = Visibility.Visible;
-            // messageGrid.Visibility = System.Windows.Visibility.Visible;
-
+            MessagePopup.Visibility = Visibility.Visible;            
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += new EventHandler(timer_Tick);
@@ -79,11 +77,7 @@ namespace CatapultWar
         //Hides the message grid after 2 seconds
         void timer_Tick(object sender, EventArgs e)
         {
-            //Hide message grid
             MessagePopup.Visibility = Visibility.Collapsed;
-            //messageGrid.Visibility = System.Windows.Visibility.Collapsed;
-
-            //stop the timer
             (sender as DispatcherTimer).Stop();
         }
     }
