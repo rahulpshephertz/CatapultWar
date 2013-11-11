@@ -16,12 +16,7 @@ namespace CatapultWar
         public static String opponentName="No Opponent";
         public static String API_KEY = "268031d927c5b6fe6919b5c6d42846e483ec44797ce74c05c81ce3faa9e797fe";
         public static String SECRET_KEY = "6cfd1beef6304efd8aea318f78181d4ed719e8a8884e25d8bfc877eb36908893";
-
-        // Game room id used in this tutorial. 
-        // NOTE* replace with your room's id that you created from 
-        // App HQ dashboard (http://apphq.shephertz.com).
-        public static String GameRoomId = "1578241363";
-        
+        public static String GameRoomId = "";
         internal static bool PlayerIsFirstOnAppWarp = true;
         public static Dictionary<string, object> tableProperties=null;
         public static string[] joinedUsers=new []{""};
