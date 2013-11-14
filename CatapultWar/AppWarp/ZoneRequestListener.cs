@@ -29,11 +29,13 @@ namespace CatapultWar.AppWarp
         {
             if (eventObj.getResult() == WarpResponseResultCode.SUCCESS)
             {
+                // Join the room where the friend is playing
                 GlobalContext.GameRoomId = eventObj.getLocationId();
                 WarpClient.GetInstance().JoinRoom(GlobalContext.GameRoomId);
             }
             else
             {
+                // remote user is either off line or has not joined any room yet. Create one and wait for him.
                 GlobalContext.tableProperties["IsPrivateRoom"]="true";
                 WarpClient.GetInstance().CreateRoom(GlobalContext.localUsername, GlobalContext.localUsername, 2, GlobalContext.tableProperties);
             }

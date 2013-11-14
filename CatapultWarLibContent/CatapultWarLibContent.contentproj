@@ -37,85 +37,85 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fonts\HUDFont.spritefont">
+    <Content Include="Fonts\HUDFont.spritefont">
       <Name>HUDFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-    <Compile Include="Fonts\MenuFont.spritefont">
+    </Content>
+    <Content Include="Fonts\MenuFont.spritefont">
       <Name>MenuFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sounds\BoulderHit.wav">
+    <Content Include="Sounds\BoulderHit.wav">
       <Name>BoulderHit</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Sounds\CatapultExplosion.wav">
+    </Content>
+    <Content Include="Sounds\CatapultExplosion.wav">
       <Name>CatapultExplosion</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Sounds\CatapultFire.wav">
+    </Content>
+    <Content Include="Sounds\CatapultFire.wav">
       <Name>CatapultFire</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Sounds\Lose.wav">
+    </Content>
+    <Content Include="Sounds\Lose.wav">
       <Name>Lose</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Sounds\RopeStretch.wav">
+    </Content>
+    <Content Include="Sounds\RopeStretch.wav">
       <Name>RopeStretch</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
-    <Compile Include="Sounds\Win.wav">
+    </Content>
+    <Content Include="Sounds\Win.wav">
       <Name>Win</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\HUD\ammoType.png">
+    <Content Include="Textures\HUD\ammoType.png">
       <Name>ammoType</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\HUD\ammoTypeNormal.png">
+    </Content>
+    <Content Include="Textures\HUD\ammoTypeNormal.png">
       <Name>ammoTypeNormal</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\HUD\ammoTypeSplit.png">
+    </Content>
+    <Content Include="Textures\HUD\ammoTypeSplit.png">
       <Name>ammoTypeSplit</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\HUD\Arrow.png">
+    </Content>
+    <Content Include="Textures\HUD\Arrow.png">
       <Name>Arrow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\HUD\guideDot.png">
+    </Content>
+    <Content Include="Textures\HUD\guideDot.png">
       <Name>guideDot</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\HUD\hudBackground.png">
+    </Content>
+    <Content Include="Textures\HUD\hudBackground.png">
       <Name>hudBackground</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\HUD\windArrow.png">
+    </Content>
+    <Content Include="Textures\HUD\windArrow.png">
       <Name>windArrow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Backgrounds\gameplay_background.jpg">
@@ -130,16 +130,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="Textures\crate\box.png">
+    <Content Include="Textures\crate\box.png">
       <Name>box</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\crate\box_explode.png">
+    </Content>
+    <Content Include="Textures\crate\box_explode.png">
       <Name>box_explode</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Textures\Catapults\AnimationsDef.xml">
@@ -150,74 +150,74 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Blue\blueDestroyed\blueCatapult_destroyed.png">
+    <Content Include="Textures\Catapults\Blue\blueDestroyed\blueCatapult_destroyed.png">
       <Name>blueCatapult_destroyed</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Blue\blueFire\blueCatapult_fire.png">
+    <Content Include="Textures\Catapults\Blue\blueFire\blueCatapult_fire.png">
       <Name>blueCatapult_fire</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Blue\blueIdle\blueIdle.png">
+    <Content Include="Textures\Catapults\Blue\blueIdle\blueIdle.png">
       <Name>blueIdle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Blue\bluePullback\blueCatapult_Pullback.png">
+    <Content Include="Textures\Catapults\Blue\bluePullback\blueCatapult_Pullback.png">
       <Name>blueCatapult_Pullback</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Red\redDestroyed\redCatapult_destroyed.png">
+    <Content Include="Textures\Catapults\Red\redDestroyed\redCatapult_destroyed.png">
       <Name>redCatapult_destroyed</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Red\redFire\redCatapult_fire.png">
+    <Content Include="Textures\Catapults\Red\redFire\redCatapult_fire.png">
       <Name>redCatapult_fire</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Red\redIdle\redIdle.png">
+    <Content Include="Textures\Catapults\Red\redIdle\redIdle.png">
       <Name>redIdle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Red\redPullback\redCatapult_Pullback.png">
+    <Content Include="Textures\Catapults\Red\redPullback\redCatapult_Pullback.png">
       <Name>redCatapult_Pullback</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Fire_Miss\fire_miss.png">
+    <Content Include="Textures\Catapults\Fire_Miss\fire_miss.png">
       <Name>fire_miss</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Catapults\Hit_Smoke\smoke.png">
+    <Content Include="Textures\Catapults\Hit_Smoke\smoke.png">
       <Name>smoke</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\Backgrounds\blank.png">
@@ -272,16 +272,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Ammo\rock_ammo.png">
+    <Content Include="Textures\Ammo\rock_ammo.png">
       <Name>rock_ammo</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Textures\Ammo\split_ammo.png">
+    </Content>
+    <Content Include="Textures\Ammo\split_ammo.png">
       <Name>split_ammo</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

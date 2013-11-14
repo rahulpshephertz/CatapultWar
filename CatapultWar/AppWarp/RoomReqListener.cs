@@ -44,6 +44,8 @@ namespace CatapultWar
            
             if (eventObj.getResult() == WarpResponseResultCode.SUCCESS)
             {
+                // reset the local global properties as we are starting a new game play session
+                GlobalContext.tableProperties["Player1Score"] = 0;
                 GlobalContext.tableProperties["Player1Score"]=0;
                 GlobalContext.tableProperties["Player2Score"]=0;
                 GlobalContext.tableProperties["WindX"]=0;
@@ -51,14 +53,17 @@ namespace CatapultWar
                 GlobalContext.tableProperties["fireNumber"]=1;
                 GlobalContext.GameRoomId = eventObj.getData().getId();
                 WarpClient.GetInstance().SubscribeRoom(GlobalContext.GameRoomId);
-                if (GlobalContext.localUsername.Equals(eventObj.getData().getName()))
-                {
+                if (GlobalContext.localUsername.Equals(eventObj.getData().getRoomOwner()))
+                {  
+                    // user who created the room is the first player
                     GlobalContext.PlayerIsFirstOnAppWarp = true;
                 }
                 else
                 {
+                    // user who joins an already created room is the second player
                     GlobalContext.PlayerIsFirstOnAppWarp = false;
                 }
+                // get live information to fetch the name of the opponent if already inside
                 WarpClient.GetInstance().GetLiveRoomInfo(GlobalContext.GameRoomId);
             }
             else
@@ -67,10 +72,12 @@ namespace CatapultWar
                 {   
                     if (GlobalContext.tableProperties["IsPrivateRoom"].ToString().Equals("true",StringComparison.InvariantCultureIgnoreCase))
                     {
+                        // failed to join a private room
                         Deployment.Current.Dispatcher.BeginInvoke(new ShowResultCallback(mShowResultCallback), "Sorry,Remote has already got the partner!!");
                     }
                     else
                     {
+                        // failed to join a random room, create a new one
                         WarpClient.GetInstance().CreateRoom(GlobalContext.localUsername, GlobalContext.localUsername, 2, GlobalContext.tableProperties);
                     }
                 }

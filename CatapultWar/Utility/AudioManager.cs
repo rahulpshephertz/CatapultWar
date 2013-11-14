@@ -61,8 +61,10 @@ namespace CatapultWar
         /// </summary>
         public static void LoadSounds()
         {
-            string soundLocation = "Sounds/";
-            audioManager.soundNames = new string[,] { 
+            try
+            {
+                string soundLocation = "Sounds/";
+                audioManager.soundNames = new string[,] { 
                             {"CatapultExplosion", "catapultExplosion"}, 
                             {"Lose", "gameOver_Lose"},
                             {"Win", "gameOver_Win"},
@@ -70,14 +72,18 @@ namespace CatapultWar
                             {"CatapultFire", "catapultFire"},
                             {"RopeStretch", "ropeStretch"}};
 
-            audioManager.soundBank = new Dictionary<string, SoundEffectInstance>();
+                audioManager.soundBank = new Dictionary<string, SoundEffectInstance>();
 
-            for (int i = 0; i < audioManager.soundNames.GetLength(0); i++)
-            {
-                SoundEffect se = contentManager.Load<SoundEffect>(
-                    soundLocation + audioManager.soundNames[i, 0]);
-                audioManager.soundBank.Add(
-                    audioManager.soundNames[i, 1], se.CreateInstance());
+                for (int i = 0; i < audioManager.soundNames.GetLength(0); i++)
+                {
+                    SoundEffect se = contentManager.Load<SoundEffect>(
+                        soundLocation + audioManager.soundNames[i, 0]);
+                    audioManager.soundBank.Add(
+                        audioManager.soundNames[i, 1], se.CreateInstance());
+                }
+            }
+            catch (Exception e)
+            { 
             }
         }
         #endregion

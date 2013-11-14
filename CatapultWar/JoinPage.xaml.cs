@@ -63,7 +63,7 @@ namespace CatapultWar
             Dispatcher.BeginInvoke(() =>
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute)));
         }
-        //Shows the message in the message grid
+      
         void showInfoMessage(string message)
         {
             messageTB.Text = message;
@@ -73,8 +73,6 @@ namespace CatapultWar
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
-
-        //Hides the message grid after 2 seconds
         void timer_Tick(object sender, EventArgs e)
         {
             MessagePopup.Visibility = Visibility.Collapsed;

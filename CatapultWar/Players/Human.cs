@@ -195,7 +195,10 @@ namespace CatapultWar
                         else
                             Catapult.ShotAngle = MinShotAngle;
                         if (App.g_isTwoHumanPlayers)
-                        {
+                        {   
+                            //Since Drag is Completed so now we will send SHOT strength and SHOT velocity to remote user
+                            //It is the final data for current fire,thats why Here I am also updating property "fireNumber" 
+                            //so if remote user will get any UDP packet after getting TCP data for current fire,It will ignore them
                             GlobalContext.fireNumber = Convert.ToInt32(GlobalContext.tableProperties["fireNumber"]);
                             GlobalContext.fireNumber++;
                             Dictionary<string, object> fireProperties = new Dictionary<string, object>();
@@ -218,7 +221,8 @@ namespace CatapultWar
         {
             // Check if it is time to take a shot  
             if (!IsActive&&App.g_isTwoHumanPlayers)
-            {
+            {  
+                //we are checking here for any new message from remote user
                 msg = MoveMessage.GetCurrentInstance();
                 if (msg.Type.Equals("SHOT"))
                 {

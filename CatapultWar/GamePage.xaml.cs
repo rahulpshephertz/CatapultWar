@@ -668,11 +668,11 @@ namespace CatapultWar
                 {
                     if (GlobalContext.joinedUsers.Length == 2)
                     {
-                        winMessage = GlobalContext.localUsername + " Wins!";
+                        winMessage = GlobalContext.localUsername + " Won!";
                         if (((playerTwo.Score > playerOne.Score) && GlobalContext.PlayerIsFirstOnAppWarp) || ((playerOne.Score > playerTwo.Score) && !GlobalContext.PlayerIsFirstOnAppWarp))
                         {
                             texture = defeatTexture;
-                            winMessage = GlobalContext.opponentName + " Wins!";
+                            winMessage = GlobalContext.opponentName + " Won!";
                         }
                     }
                     else
@@ -685,16 +685,15 @@ namespace CatapultWar
                 {
                     if (playerOne.Score > playerTwo.Score)
                     {
-                        winMessage = "Player 1 Wins!";
+                        winMessage = "Player 1 Won!";
                     }
                     else
                     {
                         texture = defeatTexture;
-                        winMessage = "Player 2 Wins!";
+                        winMessage = "Player 2 Won!";
                     }
                 
-                }
-                winMessage = winMessage + "\n press back to start new game";
+                }   
                 mSpriteBatch.Draw(
                     texture,
                     new Vector2(App.WIDTH/ 2 - texture.Width / 2,
@@ -707,6 +706,12 @@ namespace CatapultWar
                     DrawString(hudFont, winMessage,
                         new Vector2(App.WIDTH / 2 - size.X / 2,
                             App.HEIGHT / 2 - texture.Height / 2 + 100),
+                        Color.Red);
+
+                    size = hudFont.MeasureString("press back to start new game");
+                    DrawString(hudFont, "press back to start new game",
+                        new Vector2(App.WIDTH / 2 - size.X / 2,
+                            App.HEIGHT / 2 - texture.Height / 2 + 150),
                         Color.Red);
                 }
             }
