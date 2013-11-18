@@ -53,16 +53,6 @@ namespace CatapultWar
                 GlobalContext.tableProperties["fireNumber"]=1;
                 GlobalContext.GameRoomId = eventObj.getData().getId();
                 WarpClient.GetInstance().SubscribeRoom(GlobalContext.GameRoomId);
-                if (GlobalContext.localUsername.Equals(eventObj.getData().getRoomOwner()))
-                {  
-                    // user who created the room is the first player
-                    GlobalContext.PlayerIsFirstOnAppWarp = true;
-                }
-                else
-                {
-                    // user who joins an already created room is the second player
-                    GlobalContext.PlayerIsFirstOnAppWarp = false;
-                }
                 // get live information to fetch the name of the opponent if already inside
                 WarpClient.GetInstance().GetLiveRoomInfo(GlobalContext.GameRoomId);
             }
@@ -109,6 +99,16 @@ namespace CatapultWar
         {
             if (eventObj.getResult() == WarpResponseResultCode.SUCCESS && (eventObj.getJoinedUsers() != null))
             {
+                if (GlobalContext.localUsername.Equals(eventObj.getJoinedUsers()[0]))
+                {
+                    // user who created the room is the first player
+                     GlobalContext.PlayerIsFirstOnAppWarp = true;
+                }
+                else
+                {
+                    // user who joined later is second player
+                    GlobalContext.PlayerIsFirstOnAppWarp = false;
+                }
                 GlobalContext.tableProperties = eventObj.getProperties();
                 for (int i = 0; i < eventObj.getJoinedUsers().Length; i++)
                 {

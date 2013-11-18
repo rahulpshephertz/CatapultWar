@@ -17,12 +17,12 @@ namespace CatapultWar.AppWarp
 
         public void onDeleteRoomDone(com.shephertz.app42.gaming.multiplayer.client.events.RoomEvent eventObj)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void onGetAllRoomsDone(com.shephertz.app42.gaming.multiplayer.client.events.AllRoomsEvent eventObj)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         public void onGetLiveUserInfoDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveUserInfoEvent eventObj)
@@ -43,17 +43,17 @@ namespace CatapultWar.AppWarp
 
         public void onGetMatchedRoomsDone(com.shephertz.app42.gaming.multiplayer.client.events.MatchedRoomsEvent matchedRoomsEvent)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void onGetOnlineUsersDone(com.shephertz.app42.gaming.multiplayer.client.events.AllUsersEvent eventObj)
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         public void onSetCustomUserDataDone(com.shephertz.app42.gaming.multiplayer.client.events.LiveUserInfoEvent eventObj)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

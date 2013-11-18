@@ -249,10 +249,18 @@ namespace CatapultWar
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(false);
             if (isTwoHumanPlayers)
             {
+                GlobalContext.tableProperties["Player1Score"] = 0;
+                GlobalContext.tableProperties["Player2Score"] = 0;
                 if (GlobalContext.joinedUsers != null)
                 {
+                    //Dictionary<string, object> scoreProperties = new Dictionary<string, object>();
+                    //scoreProperties.Add("Player1Score", 0);
+                    //scoreProperties.Add("Player2Score", 0);
+                    //WarpClient.GetInstance().UpdateRoomProperties(GlobalContext.GameRoomId,scoreProperties,null);
                     WarpClient.GetInstance().LeaveRoom(GlobalContext.GameRoomId);
+                    WarpClient.GetInstance().DeleteRoom(GlobalContext.GameRoomId);
                 }
+                playerOne.Score = playerTwo.Score = 0;
                 GlobalContext.notificationListenerObj.RemoveCallBacks();
                 GlobalContext.conListenObj.RemoveConnectionRecoverableCallbacks();
             }
@@ -746,10 +754,10 @@ namespace CatapultWar
                     playerTwoHUDPosition + new Vector2(123, 35), Color.White);
                 if(isTwoHumanPlayers)
                 DrawString(hudFont, (GlobalContext.PlayerIsFirstOnAppWarp ? GlobalContext.opponentName : GlobalContext.localUsername),
-                    playerTwoHUDPosition + new Vector2(40, 1), Color.Red);
+                    playerTwoHUDPosition + new Vector2(30, 1), Color.Red);
                 else
                  DrawString(hudFont,playerTwo.Name,
-                   playerTwoHUDPosition + new Vector2(40, 1), Color.Red);
+                   playerTwoHUDPosition + new Vector2(30, 1), Color.Red);
 
                 rect = new Rectangle((int)playerTwoHealthBarPosition.X, (int)playerTwoHealthBarPosition.Y,
                     (int)healthBarFullSize.X * playerTwo.Health / 100, (int)healthBarFullSize.Y);
@@ -922,25 +930,28 @@ namespace CatapultWar
             /*since opponents has left the room so set the high score to finish the game 
               and declare host user as winner 
              */
-            if (GlobalContext.PlayerIsFirstOnAppWarp)
+            if (!gameOver)
             {
-                playerOne.Score = 100;
-                playerOne.Catapult.ForcedTosetGameOver();
+                if (GlobalContext.PlayerIsFirstOnAppWarp)
+                {
+                    playerOne.Score = 100;
+                    playerOne.Catapult.ForcedTosetGameOver();
+                }
+                else
+                {
+                    playerTwo.Score = 100;
+                    playerTwo.Catapult.ForcedTosetGameOver();
+                }
+                GlobalContext.opponentName = "No Opponent";
+                GlobalContext.messageFromOpponent = "Opponent has left the room";
+                GlobalContext.PlayerIsFirstOnAppWarp = true;
+                GlobalContext.tableProperties["Player1Score"] = 0;
+                GlobalContext.tableProperties["Player2Score"] = 0;
+                GlobalContext.tableProperties["WindX"] = 0;
+                GlobalContext.tableProperties["WindY"] = 0;
+                GlobalContext.tableProperties["fireNumber"] = 1;
+                GlobalContext.joinedUsers = new[] { GlobalContext.localUsername };
             }
-            else
-            {
-                playerTwo.Score = 100;
-                playerTwo.Catapult.ForcedTosetGameOver();
-            }
-            GlobalContext.opponentName = "No Opponent";
-            GlobalContext.messageFromOpponent = "Opponent has left the room";
-            GlobalContext.PlayerIsFirstOnAppWarp = true;
-            GlobalContext.tableProperties["Player1Score"] = 0;
-            GlobalContext.tableProperties["Player2Score"] = 0;
-            GlobalContext.tableProperties["WindX"] = 0;
-            GlobalContext.tableProperties["WindY"] = 0;
-            GlobalContext.tableProperties["fireNumber"]=1;
-            GlobalContext.joinedUsers = new[] { GlobalContext.localUsername };
         }
         private void OpponentPaused()
         {
