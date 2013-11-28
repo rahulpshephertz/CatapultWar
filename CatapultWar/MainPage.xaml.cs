@@ -28,6 +28,10 @@ namespace CatapultWar
         {
             MessagePopup.Visibility = Visibility.Collapsed;
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+        }
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
             try
@@ -153,5 +157,6 @@ namespace CatapultWar
             MessagePopup.Visibility = Visibility.Collapsed;
             (sender as DispatcherTimer).Stop();
         }
+      
     }
 }

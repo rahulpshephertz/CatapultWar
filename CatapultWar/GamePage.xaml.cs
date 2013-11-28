@@ -177,7 +177,7 @@ namespace CatapultWar
         Vector2 playerOneHealthBarPosition;
         Vector2 playerTwoHealthBarPosition;
         Vector2 healthBarFullSize;
-
+        NavigationMode mNavigationMode;
         // Gameplay members
         Human playerOne;
         Player playerTwo;
@@ -212,33 +212,30 @@ namespace CatapultWar
             timer.Update += OnUpdate;
             timer.Draw += OnDraw;
         }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+            SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true);
             // Set the sharing mode of the graphics device to turn on XNA rendering          
             if (e.NavigationMode == NavigationMode.New)
             {
-                SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true);
-
                 // Create a new SpriteBatch, which can be used to draw textures.
                 mSpriteBatch = new SpriteBatch(SharedGraphicsDeviceManager.Current.GraphicsDevice);
                 LoadAssets();
                 // TODO: use this.content to load your game content here
+                if (isTwoHumanPlayers)
+                {
+                    GlobalContext.notificationListenerObj.AddCallBacks(OpponentLeftTheRoom, OpponentPaused, OpponentResumed);
+                    GlobalContext.conListenObj.AddConnectionRecoverableCallbacks(ConnectionRecoverableError, ConnectionRecoverd);
+                }
+               
+            }
+            // Start the timer
+            timer.Start();
+            Start();
+            mNavigationMode = e.NavigationMode;
 
-                // Start the timer
-                timer.Start();
-                Start();
-            }
-            else if (e.NavigationMode == NavigationMode.Back)
-            {
-                NavigationService.GoBack();
-            }
-            if (isTwoHumanPlayers)
-            {
-                GlobalContext.notificationListenerObj.AddCallBacks(OpponentLeftTheRoom, OpponentPaused, OpponentResumed);
-                GlobalContext.conListenObj.AddConnectionRecoverableCallbacks(ConnectionRecoverableError, ConnectionRecoverd);
-            }
-            base.OnNavigatedTo(e);
+           
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -275,6 +272,12 @@ namespace CatapultWar
         {
             // TODO: Add your update logic here
             // Check it one of the players reached 5 and stop the game
+            if (mNavigationMode == NavigationMode.Back)
+            {
+                mNavigationMode = NavigationMode.Refresh;
+                NavigationService.GoBack();
+                return;
+            }
             float elapsed = (float)e.ElapsedTime.TotalSeconds;
             mInputState.Update();
             HandleInput(mInputState);
@@ -499,14 +502,31 @@ namespace CatapultWar
         /// </summary>
         private void OnDraw(object sender, GameTimerEventArgs e)
         {
-            SharedGraphicsDeviceManager.Current.GraphicsDevice.Clear(Color.CornflowerBlue);
-            mSpriteBatch.Begin();
-            // Render all parts of the screen
-            DrawBackground();
-            DrawPlayerTwo(e);
-            DrawPlayerOne(e);
-            DrawHud();
-            mSpriteBatch.End();
+            try
+            {
+                if (mNavigationMode == NavigationMode.Back)
+                {
+                    mNavigationMode = NavigationMode.Refresh;
+                    NavigationService.GoBack();
+                    return;
+                }
+                else if (mNavigationMode == NavigationMode.Refresh)
+                {
+                    return;
+                }
+                SharedGraphicsDeviceManager.Current.GraphicsDevice.Clear(Color.CornflowerBlue);
+                mSpriteBatch.Begin();
+                // Render all parts of the screen
+                DrawBackground();
+                DrawPlayerTwo(e);
+                DrawPlayerOne(e);
+                DrawHud();
+                mSpriteBatch.End();
+            }
+            catch (Exception e1)
+            { 
+            
+            }
             // TODO: Add your drawing code here
         }
         #region Content Loading/Unloading
@@ -850,9 +870,18 @@ namespace CatapultWar
         /// </summary>
         void DrawString(SpriteFont font, string text, Vector2 position, Color color)
         {
-            mSpriteBatch.DrawString(font, text,
-                new Vector2(position.X + 1, position.Y + 1), Color.Black);
-            mSpriteBatch.DrawString(font, text, position, color);
+            try
+            {
+                mSpriteBatch.DrawString(font, text,
+                    new Vector2(position.X + 1, position.Y + 1), Color.Black);
+                mSpriteBatch.DrawString(font, text, position, color);
+            }
+            catch (Exception e)
+            {
+                //Its hack code,Sometime Drawsrting throws exception while drawing oppentent's name
+                //(because opponent is in different region and user's phone does not support his language)
+                GlobalContext.opponentName = "random";
+            }
         }
 
         /// <summary>

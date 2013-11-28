@@ -126,5 +126,16 @@ namespace CatapultWar
                     // WarpClient.GetInstance().UpdateRoomProperties(GlobalContext.GameRoomId, GlobalContext.tableProperties, null);               
                 }
         }
+
+
+        public void onGameStarted(string sender, string roomId, string nextTurn)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void onGameStopped(string sender, string roomId)
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
