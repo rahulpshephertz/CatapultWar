@@ -52,8 +52,7 @@ namespace CatapultWar
                 if (!GlobalContext.localUsername.Equals(username))
                 {
                     if(OpponentLeftRoom!=null)
-                    Deployment.Current.Dispatcher.BeginInvoke(new UserLeftRoom(OpponentLeftRoom));
-                   // WarpClient.GetInstance().UpdateRoomProperties(GlobalContext.GameRoomId, GlobalContext.tableProperties, null);               
+                    Deployment.Current.Dispatcher.BeginInvoke(new UserLeftRoom(OpponentLeftRoom));            
                 }
             }
         }
@@ -112,8 +111,7 @@ namespace CatapultWar
              if (!GlobalContext.localUsername.Equals(username) && !isLobby)
               {
                   if (RemoteUserPaused != null)
-                      Deployment.Current.Dispatcher.BeginInvoke(new UserLeftRoom(RemoteUserPaused));
-                    // WarpClient.GetInstance().UpdateRoomProperties(GlobalContext.GameRoomId, GlobalContext.tableProperties, null);               
+                      Deployment.Current.Dispatcher.BeginInvoke(new UserPaused(RemoteUserPaused));             
              }
         }
 
@@ -122,8 +120,7 @@ namespace CatapultWar
               if (!GlobalContext.localUsername.Equals(username) && !isLobby)
                 {
                     if (RemoteUserResumed != null)
-                        Deployment.Current.Dispatcher.BeginInvoke(new UserLeftRoom(RemoteUserResumed));
-                    // WarpClient.GetInstance().UpdateRoomProperties(GlobalContext.GameRoomId, GlobalContext.tableProperties, null);               
+                        Deployment.Current.Dispatcher.BeginInvoke(new UserResumed(RemoteUserResumed));               
                 }
         }
 
