@@ -13,3 +13,5 @@ It Describe the following features of AppWarp
 2.TCP and UDP communication.
 
 3.Connection resilency.
+
+To Run this sample game you will have need of ApiKey and SecretKey,These values will be given by Apphq(http://apphq.shephertz.com/) after doing registration of your game.once you get them put both the values in GlobalContext.cs file
