@@ -134,5 +134,16 @@ namespace CatapultWar
         {
             //throw new NotImplementedException();
         }
+
+
+        public void onNextTurnRequest(string lastTurn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void onPrivateUpdateReceived(string sender, byte[] update, bool fromUdp)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
